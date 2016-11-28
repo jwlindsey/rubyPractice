@@ -17,18 +17,19 @@ class Card
 end
 
 class Deck
+  attr_reader :cards
   def initialize
     ranks = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K"]
     suits = ["Spades", "Hearts", "Diamonds", "Clubs"]
-    @deck = ranks.product(suits)
+    @cards = ranks.product(suits)
   end
 
   def shuffle
-    @deck = ranks.product(suits).shuffle!
+    @cards = ranks.product(suits).shuffle!
   end
 
   def deal
-    @deck = ranks.product(suits).shift
+    @cards = ranks.product(suits).shift
   end
 end
 
