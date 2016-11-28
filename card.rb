@@ -22,8 +22,13 @@ class Deck
     suits = ["Spades", "Hearts", "Diamonds", "Clubs"]
     @deck = ranks.product(suits)
   end
+
   def shuffle
     @deck = ranks.product(suits).shuffle!
+  end
+
+  def deal
+    @deck = ranks.product(suits).shift
   end
 end
 
