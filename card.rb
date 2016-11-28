@@ -22,6 +22,7 @@ class Deck
         @cards << Card.new(rank, suit)
       end
     end
+
     def shuffle
       @cards = @cards.shuffle!
     end
@@ -30,6 +31,7 @@ class Deck
       number.times {@cards.shift.output_card}
     end
 end
-
+end
 deck = Deck.new
+deck.shuffle
 deck.deal(7)
