@@ -34,4 +34,4 @@ class Deck
 end
 
 cards = Deck.new
-puts cards.shuffle
+puts cards.deal
