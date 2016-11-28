@@ -15,3 +15,17 @@ class Card
   end
 
 end
+
+class Deck
+  def initialize
+    ranks = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K"]
+    suits = ["Spades", "Hearts", "Diamonds", "Clubs"]
+    @deck = ranks.product(suits)
+  end
+  def shuffle
+    @deck = ranks.product(suits).shuffle!
+  end
+end
+
+
+puts deck
