@@ -9,29 +9,27 @@ class Card
   def output_card
     puts "the #{self.rank} of #{self.suit}"
   end
-
-  def self.random_card
-    Card.new(rand(10), :spades)
-  end
-
 end
 
 class Deck
-  attr_reader :cards
   def initialize
-    ranks = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K"]
-    suits = ["Spades", "Hearts", "Diamonds", "Clubs"]
-    @cards = ranks.product(suits)
+    @ranks = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K"]
+    @suits = ["Spades", "Hearts", "Diamonds", "Clubs"]
+    @cards = []
+
+    @ranks.each do |rank|
+      @suits.each do |suit|
+        @cards << Card.new(rank, suit)
+      end
   end
 
-  def shuffle
-    @cards = ranks.product(suits).shuffle!
+    @cards.shuffle!
   end
 
-  def deal
-    @cards = ranks.product(suits).shift
-  end
+    def deal
+      @cards.times {@cards.shift.output_card}
+    end
 end
 
-cards = Deck.new
-puts cards.deal
+deck = Deck.new
+deck.deal(7)
