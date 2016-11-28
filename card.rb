@@ -21,13 +21,13 @@ class Deck
       @suits.each do |suit|
         @cards << Card.new(rank, suit)
       end
-  end
+    end
+    def shuffle
+      @cards = @cards.shuffle!
+    end
 
-    @cards.shuffle!
-  end
-
-    def deal
-      @cards.times {@cards.shift.output_card}
+    def deal (number)
+      number.times {@cards.shift.output_card}
     end
 end
 
