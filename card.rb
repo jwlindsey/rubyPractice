@@ -33,5 +33,5 @@ class Deck
   end
 end
 
-
-puts deck
+cards = Deck.new
+puts cards
