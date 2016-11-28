@@ -23,6 +23,8 @@ class Deck
       end
     end
 
+end
+
     def shuffle
       @cards = @cards.shuffle!
     end
@@ -30,8 +32,14 @@ class Deck
     def deal (number)
       number.times {@cards.shift.output_card}
     end
+
+    def count
+      @cards.count
+    end
 end
-end
+
 deck = Deck.new
 deck.shuffle
 deck.deal(7)
+
+puts deck.count
