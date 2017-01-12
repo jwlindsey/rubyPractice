@@ -5,7 +5,7 @@ class Image
   end
 
 #turns all 0's adjacent to 1 into 1 except edges
-  def blur
+  def location
     #first find the location of all the 1's
     #go over each location of a 1 and do something
     #something is find all adjacent locations
@@ -26,6 +26,9 @@ class Image
   #at the one do something to change the 0's to 1's around it
   #but make changes to the original array and not the copied array
   #at end loop destroy the copied array
+  def copy_array
+
+  end
   def output_image
     @pixel_row.each do |data|
       puts data.join
@@ -40,4 +43,4 @@ image = Image.new([
   [0, 0, 0, 0]
 ])
 
-image.blur
+image.location
