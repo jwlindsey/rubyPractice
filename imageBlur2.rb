@@ -29,7 +29,7 @@ class Image
     @pixel_rows.each.with_index do |row, row_index|
       row.each.with_index do |column, column_index|
         #go over each location of a 1 and store it in a variable
-        if column == 1 #change this logic
+        if column == 1 #change this logic to determine if there is a 1
           locations.push [row_index, column_index]
         end
       end
