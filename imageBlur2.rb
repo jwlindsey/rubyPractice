@@ -14,11 +14,25 @@ class Image
   #change the ones and zeros to their new states
   def blur(row_index, column_index)
     #go by each row and column adjacent to your location and change to a 1
-    @pixel_rows[row_index-1][column_index] = 1
-    @pixel_rows[row_index][column_index-1] = 1
-    @pixel_rows[row_index][column_index+1] = 1
-    @pixel_rows[row_index+1][column_index] = 1
-    #this will add an extra one to the end of the row, how do you terminate it?
+    #use if statements to set limits of where to stop
+    #top left most pixel
+    if row_index != 0
+      @pixel_rows[row_index-1][column_index] = 1
+    end
+    #bottom left most pixel
+    if column_index != 0
+      @pixel_rows[row_index][column_index-1] = 1
+    end
+    #grabs the topmost row
+    first_row = pixel_rows[0]
+    #top right most pixel
+    if column_index != first_row.length -1
+      @pixel_rows[row_index][column_index+1] = 1
+    end
+    #bottom right most pixel
+    if row_index != pixel_rows.length -1
+      @pixel_rows[row_index+1][column_index] = 1
+    end
   end
 
   #finds the 1 data
@@ -29,7 +43,8 @@ class Image
     @pixel_rows.each.with_index do |row, row_index|
       row.each.with_index do |column, column_index|
         #go over each location of a 1 and store it in a variable
-        if column == 1 #change this logic to determine if there is a 1
+        #if column == 1 #change this logic to determine if there is a 1
+        if location == 1
           locations.push [row_index, column_index]
         end
       end
@@ -45,6 +60,8 @@ class Image
     ones_coordinates = locations
     #loops through each coordinates pair
     one_coordinates.each do |coordinate|
+      #what did I do here? I can't remember
+      row_index, column_index = coordinate
       #applies blur method to each coordinate pair
       blur(row_index, column_index)
     end
