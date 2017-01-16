@@ -4,36 +4,48 @@ class Image
     @pixel_rows = pixel_rows
   end
 
-#turns all 0's adjacent to 1 into 1 except edges
+  #spit out the finished image
+  def output_image
+    @pixel_row.each do |data|
+      puts data.join
+    end
+  end
+
+  #change the ones and zeros to their new states
+  def blur(row_index,column_index)
+    #go by each row and column adjacent to your location and change to a 1
+    @image[row_index-1][column_index] = 1
+    @image[row_index][column_index-1] = 1
+    @image[row_index][column_index+1] = 1
+    @image[row_index+1][column_index] = 1
+  end
+
+  #turns all 0's adjacent to 1 into 1 except edges
   def location
-    #first find the location of all the 1's
-    #go over each location of a 1 and do something
-    #something is find all adjacent locations
-    #convert any adjacent locations within bounds of the image to a 1
+    #store the locations somewhere
     locations = []
+    #first find the location of all the 1's by looping through each row and column
     @pixel_rows.each.with_index do |row, row_index|
       row.each.with_index do |column, column_index|
+        #go over each location of a 1 and store it in a variable
         if column == 1
           locations.push [row_index, column_index]
         end
       end
     end
+    #print locations for coder use
     p locations
   end
-  #make a copy of the array to be modified
-  #loop through the copied array to find the one
-  #at the one do something to change the 0's to 1's around it
-  #but make changes to the original array and not the copied array
-  #at end loop destroy the copied array
+
+  #copy the full image array
   def copy_array
     array_clone = image.clone
-    array_clone.locations do |change|
-
-    end
   end
-  def output_image
-    @pixel_row.each do |data|
-      puts data.join
+  
+  #loop through the array but chane the original image
+  def change
+    array_clone.each do |row_index, column_index|
+      blur(row_index,column_index)
     end
   end
 end
