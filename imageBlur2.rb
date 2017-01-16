@@ -20,14 +20,16 @@ class Image
     end
     p locations
   end
-  #do something with the locations to make the edges turn to 1
   #make a copy of the array to be modified
   #loop through the copied array to find the one
   #at the one do something to change the 0's to 1's around it
   #but make changes to the original array and not the copied array
   #at end loop destroy the copied array
   def copy_array
+    array_clone = image.clone
+    array_clone.locations do |change|
 
+    end
   end
   def output_image
     @pixel_row.each do |data|
