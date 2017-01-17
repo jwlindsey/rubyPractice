@@ -24,13 +24,13 @@ class Image
       @pixel_rows[row_index][column_index-1] = 1
     end
     #grabs the topmost row
-    first_row = pixel_rows[0]
+    first_row = @pixel_rows[0]
     #top right most pixel
-    if column_index != first_row.length -1
+    if column_index != first_row.length - 1
       @pixel_rows[row_index][column_index+1] = 1
     end
     #bottom right most pixel
-    if row_index != pixel_rows.length -1
+    if row_index != @pixel_rows.length - 1
       @pixel_rows[row_index+1][column_index] = 1
     end
   end
@@ -44,23 +44,20 @@ class Image
       row.each.with_index do |column, column_index|
         #go over each location of a 1 and store it in a variable
         #if column == 1 #change this logic to determine if there is a 1
-        if location == 1
+        if column == 1
           locations.push [row_index, column_index]
         end
       end
     end
-    #print locations for coder use
-    p locations
     #return location values
     return locations
   end
 
   #loop through the 1's coordinates and changes the original image
   def change
-    ones_coordinates = locations
     #loops through each coordinates pair
-    one_coordinates.each do |coordinate|
-      #what did I do here? I can't remember
+    location.each do |coordinate|
+      #grab coordinate and put it into a reable format for blur
       row_index, column_index = coordinate
       #applies blur method to each coordinate pair
       blur(row_index, column_index)
@@ -86,3 +83,5 @@ afterImage = Image.new([
 image.location
 
 image.change
+
+image.output_image
