@@ -34,7 +34,8 @@ class Stack
   #stack and return the value to the user
 
   def pop
-    # I return a value
+    data.pop
+    puts "push.value"?
   end
 end
 
