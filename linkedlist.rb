@@ -22,6 +22,7 @@ class Stack
 
   def initialize
     @data = nil
+
   end
 
   #Push a value onto the Stack
